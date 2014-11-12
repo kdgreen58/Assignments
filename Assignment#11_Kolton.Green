@@ -1,0 +1,13 @@
+﻿SELECT year, month, day, hour, wind_dir,
+	CASE WHEN wind_dir = '0' THEN 'North'
+	     WHEN wind_dir > '0' AND wind_dir < '90' THEN 'Northeast'	
+	     WHEN wind_dir = '90' THEN 'East'
+	     WHEN wind_dir > '90' AND wind_dir < '180' THEN 'Southeast'	
+	     WHEN wind_dir = '180' THEN 'South'
+	     WHEN wind_dir > '180' AND wind_dir < '270' THEN 'Southwest'	
+	     WHEN wind_dir = '270' THEN 'West'
+	     WHEN wind_dir > '270' AND wind_dir < '361' THEN 'Northwest'	
+	     ELSE 'No Wind Direction Given'
+	END as wind_direction
+FROM weather
+WHERE hour = '1' and day ='1'; 
